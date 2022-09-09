@@ -1,11 +1,11 @@
 <?php
-$sname= "localhost";
+$sname= "remotemysql.com";
 
-$unmae= "root";
+$unmae= "RWwwXzy6b2";
 
-$password = "";
+$password = "YnIuW8uVNY";
 
-$db_name = "php_project";
+$db_name = "RWwwXzy6b2";
 session_start();
 $conn = mysqli_connect($sname, $unmae, $password, $db_name);
 
