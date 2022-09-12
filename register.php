@@ -1,4 +1,17 @@
-<?php include 'header/header.php' ?>
+<?php include 'header/header.php';
+require ('conn.php');
+if(isset($_POST["register"])){
+    $name = $_POST["username"];
+    $email = $_POST["email_id"];
+    $pass = $_POST["password"];
+    $str = "insert into user_data (name , email ,pass)values ('$name' , '$email' , '$pass')";
+    $res = mysqli_query($conn , $str);
+    if($res > 0){
+        header('Location: login.php');
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,7 +136,7 @@ input {
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <h3 class="register-heading text-secondary">PASSENGER REGISTRATION</h3>
                 <div class="register-form">
-                <form method="POST" action="includes/register.inc.php">
+                <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                     <div class="conrainer-fluid">
                     <div class="row">
                         <div class="col-1 p-0">
@@ -168,7 +181,7 @@ input {
                         </div>                                                                                                  
                     </div>
                     <div class="text-center">
-                        <button name="signup_submit" type="submit" class="btn btn-info mt-5">
+                        <button name="register" type="submit" class="btn btn-info mt-5">
                             <div style="font-size: 1.5rem;">
                             <i class="fa fa-lg fa-arrow-right" aria-hidden="true"></i> Complete  
                             </div>
